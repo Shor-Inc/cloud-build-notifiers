@@ -18,8 +18,7 @@ metadata:
   name: slack-notifier
 spec:
   notification:
-    # Notify on build start and success
-    filter: build.status == Build.Status.WORKING || build.status == Build.Status.SUCCESS
+    filter: build.status in [Build.Status.WORKING, Build.Status.SUCCESS, Build.Status.FAILURE, Build.Status.TIMEOUT, Build.Status.INTERNAL_ERROR]
     delivery:
       webhookUrl:
         secretRef: webhook-url
